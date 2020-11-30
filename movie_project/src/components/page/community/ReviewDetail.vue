@@ -36,14 +36,14 @@
           </v-row>
           <p class="text-left" style="font-size: 16px; padding: 20px 0 0 0; white-space: pre-line;">{{ reviewInfo.content }}</p>
 
-          <v-row v-if="reviewInfo.username==$cookies.get('username')" align="baseline">
+          <v-row align="baseline">
             <v-btn class="mx-3" fab dark small color="pink" @click="likeReview">
               <v-icon dark>mdi-heart</v-icon>
             </v-btn>
             <p>이 글을 <b>{{ computedNumOfLikeUsers }}명</b>이 좋아합니다.</p>
               <v-spacer></v-spacer>
-              <v-btn text class="hidden-sm-and-down"><ReviewUpdate :review="computedReviewInfo" /></v-btn>
-              <v-btn text class="hidden-sm-and-down"><ReviewDelete :review="computedReviewInfo" /></v-btn>
+              <v-btn v-if="reviewInfo.username==$cookies.get('username')" text class="hidden-sm-and-down"><ReviewUpdate :review="computedReviewInfo" /></v-btn>
+              <v-btn v-if="reviewInfo.username==$cookies.get('username')" text class="hidden-sm-and-down"><ReviewDelete :review="computedReviewInfo" /></v-btn>
           </v-row>
           <CommentList />
         </v-card-text>
